@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files\Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\Generated Files\Debug">
+      <UniqueIdentifier>{0b57a21e-cb9b-44c8-9b1a-4e9e237303ca}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\Generated Files\Release">
+      <UniqueIdentifier>{5807929a-68d7-442c-880e-09a1961925fc}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glasswaredetectsystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    
+    <ClCompile Include="stateTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="pushButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="toolButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="clogFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="detectThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="myQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget_CarveInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    
+    
+    <ClCompile Include="Widget_CarveSetting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget_CarveImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="CIOCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    
+    
+    <ClCompile Include="CombineResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmygraphicsview.cpp">
+      <Filter>Header Files\Generated Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="cmyerrorlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_mycellwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="dhbasewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="camerasatuslabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="GeneratedFiles\Debug\moc_widget_sample.cpp">
+      <Filter>Header Files\Generated Files\Debug</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_title.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widget_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="cerrorimagelist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_title.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myimageshowitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_errortype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="mytableview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="GeneratedFiles\Debug\moc_widget_debug.cpp">
+      <Filter>Header Files\Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget_CameraPosition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    
+    
+    <ClCompile Include="database.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipRuntime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_plc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="LightSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widgetwarning.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widgetUser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="widget_IoSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+    <ClCompile Include="Widget_PLCPicture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    
+    
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="glasswaredetectsystem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="glasswaredetectsystem.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtRcc Include="glasswaredetectsystem.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="image_widget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="pushButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="detectThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="Widget_CarveInfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="Widget_CarveInfo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget_CarveSetting.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget_CarveImage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="CIOCard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_image.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_Management.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="widget_Management.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="cmygraphicsview.h">
+      <Filter>Header Files\Generated Files</Filter>
+    </QtMoc>
+    <CustomBuild Include="cmyerrorlist.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <QtMoc Include="widget_mycellwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="dhbasewidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="camerasatuslabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_title.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_test.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="widget_test.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="cerrorimagelist.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="myimageshowitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_errortype.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widget_camera.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mytableview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget_CameraPosition.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="Widget_CameraPosition.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="clogFile.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <CustomBuild Include="stateTool.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="common.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ConfigInfo.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="myQueue.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="resource.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="setDebugNew.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="toolButton.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_TestWidget.h">
+      <Filter>Header Files\Generated Files</Filter>
+    </CustomBuild>
+    
+    
+    
+    
+    
+    
+    <CustomBuild Include="glasswaredetectsystem_zh.ts">
+      <Filter>Translation Files</Filter>
+    </CustomBuild>
+    <QtMoc Include="EquipRuntime.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <CustomBuild Include="database.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <QtUic Include="widget_plc.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="widget_plc.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    
+    <QtUic Include="LightSource.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="LightSource.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgetwarning.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <CustomBuild Include="RseeController.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    
+    <QtUic Include="userwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    
+    <QtMoc Include="widgetUser.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtUic Include="iowidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="widget_IoSet.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget_PLCPicture.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    
+  </ItemGroup>
+</Project>
