@@ -19,374 +19,6 @@
      <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,2,3">
       <item>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0" rowspan="2">
-         <widget class="QGroupBox" name="groupBox_2">
-          <property name="title">
-           <string>特殊参数设置</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_26">
-             <property name="text">
-              <string>输送线主动齿轮数</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_27"/>
-           </item>
-           <item row="13" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_23"/>
-           </item>
-           <item row="11" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_39">
-             <property name="text">
-              <string>夹瓶带齿轮数</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_31"/>
-           </item>
-           <item row="2" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_30"/>
-           </item>
-           <item row="0" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_24"/>
-           </item>
-           <item row="6" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_29"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_36">
-             <property name="text">
-              <string>输送线板链节距</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_25">
-             <property name="text">
-              <string>输送线电机减速比</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_25"/>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_38">
-             <property name="text">
-              <string>夹瓶电机减速比</string>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_33"/>
-           </item>
-           <item row="12" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_22"/>
-           </item>
-           <item row="8" column="1">
-            <widget class="QRadioButton" name="radioButton">
-             <property name="text">
-              <string>是</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="2">
-            <widget class="QRadioButton" name="radioButton_3">
-             <property name="text">
-              <string>否</string>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="0">
-            <widget class="QLabel" name="label_22">
-             <property name="text">
-              <string>前输送线减速时间</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QLabel" name="label_5">
-             <property name="text">
-              <string>前输送线频率</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
-            <widget class="QLabel" name="label_21">
-             <property name="text">
-              <string>前输送线加速时间</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="0">
-            <widget class="QLabel" name="label_40">
-             <property name="text">
-              <string>夹瓶皮带节距</string>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QLabel" name="label_48">
-             <property name="text">
-              <string>前输送线启动延迟</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label_53">
-             <property name="text">
-              <string>前输送线激活</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_37">
-             <property name="text">
-              <string>夹瓶比列因子</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1" colspan="2">
-            <widget class="QLineEdit" name="lineEdit_28"/>
-           </item>
-          </layout>
-          <zorder>label_25</zorder>
-          <zorder>lineEdit_24</zorder>
-          <zorder>label_36</zorder>
-          <zorder>lineEdit_27</zorder>
-          <zorder>label_39</zorder>
-          <zorder>lineEdit_30</zorder>
-          <zorder>label_26</zorder>
-          <zorder>lineEdit_25</zorder>
-          <zorder>label_38</zorder>
-          <zorder>lineEdit_29</zorder>
-          <zorder>lineEdit_31</zorder>
-          <zorder>lineEdit</zorder>
-          <zorder>lineEdit_23</zorder>
-          <zorder>lineEdit_22</zorder>
-          <zorder>lineEdit_33</zorder>
-          <zorder>radioButton</zorder>
-          <zorder>radioButton_3</zorder>
-          <zorder>label_53</zorder>
-          <zorder>label_40</zorder>
-          <zorder>label_5</zorder>
-          <zorder>label_21</zorder>
-          <zorder>label_22</zorder>
-          <zorder>label_48</zorder>
-          <zorder>label_37</zorder>
-          <zorder>lineEdit_28</zorder>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="groupBox_8">
-          <property name="title">
-           <string>变频器</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_30">
-             <property name="text">
-              <string>产品速度:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit_1">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>BPM</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_33">
-             <property name="text">
-              <string>理瓶器频率:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="QLabel" name="label_28">
-             <property name="text">
-              <string>Hz</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_34">
-             <property name="text">
-              <string>理瓶器加速时间:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_3">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>秒</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_29">
-             <property name="text">
-              <string>理瓶器减速时间:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_4">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>秒</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_31">
-             <property name="text">
-              <string>输送线加速时间:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_5">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>秒</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_35">
-             <property name="text">
-              <string>输送线减速时间:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_6">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="2">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>秒</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_32">
-             <property name="text">
-              <string>瓶子直径:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_7">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>毫米</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QRadioButton" name="radioButton_1">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>圆瓶</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1">
-            <widget class="QRadioButton" name="radioButton_2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>方瓶</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
         <item row="2" column="1">
          <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
@@ -645,6 +277,374 @@
           </layout>
          </widget>
         </item>
+        <item row="1" column="0" rowspan="2">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>特殊参数设置</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_26">
+             <property name="text">
+              <string>输送线主动齿轮数</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_27"/>
+           </item>
+           <item row="13" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_23"/>
+           </item>
+           <item row="11" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_39">
+             <property name="text">
+              <string>夹瓶带齿轮数</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_31"/>
+           </item>
+           <item row="2" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_30"/>
+           </item>
+           <item row="0" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_24"/>
+           </item>
+           <item row="6" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_29"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_36">
+             <property name="text">
+              <string>输送线板链节距</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_25">
+             <property name="text">
+              <string>输送线电机减速比</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_25"/>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_38">
+             <property name="text">
+              <string>夹瓶电机减速比</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_33"/>
+           </item>
+           <item row="12" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_22"/>
+           </item>
+           <item row="8" column="1">
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>是</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="2">
+            <widget class="QRadioButton" name="radioButton_3">
+             <property name="text">
+              <string>否</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="label_22">
+             <property name="text">
+              <string>前输送线减速时间</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>前输送线频率</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="label_21">
+             <property name="text">
+              <string>前输送线加速时间</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="label_40">
+             <property name="text">
+              <string>夹瓶皮带节距</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="label_48">
+             <property name="text">
+              <string>前输送线启动延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_53">
+             <property name="text">
+              <string>前输送线激活</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_37">
+             <property name="text">
+              <string>夹瓶比列因子</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1" colspan="2">
+            <widget class="QLineEdit" name="lineEdit_28"/>
+           </item>
+          </layout>
+          <zorder>label_25</zorder>
+          <zorder>lineEdit_24</zorder>
+          <zorder>label_36</zorder>
+          <zorder>lineEdit_27</zorder>
+          <zorder>label_39</zorder>
+          <zorder>lineEdit_30</zorder>
+          <zorder>label_26</zorder>
+          <zorder>lineEdit_25</zorder>
+          <zorder>label_38</zorder>
+          <zorder>lineEdit_29</zorder>
+          <zorder>lineEdit_31</zorder>
+          <zorder>lineEdit</zorder>
+          <zorder>lineEdit_23</zorder>
+          <zorder>lineEdit_22</zorder>
+          <zorder>lineEdit_33</zorder>
+          <zorder>radioButton</zorder>
+          <zorder>radioButton_3</zorder>
+          <zorder>label_53</zorder>
+          <zorder>label_40</zorder>
+          <zorder>label_5</zorder>
+          <zorder>label_21</zorder>
+          <zorder>label_22</zorder>
+          <zorder>label_48</zorder>
+          <zorder>label_37</zorder>
+          <zorder>lineEdit_28</zorder>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_8">
+          <property name="title">
+           <string>变频器</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_7">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>秒</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_33">
+             <property name="text">
+              <string>理瓶器频率:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>秒</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>毫米</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_34">
+             <property name="text">
+              <string>理瓶器加速时间:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lineEdit_4">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_35">
+             <property name="text">
+              <string>输送线减速时间:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="2">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>秒</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>BPM</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_32">
+             <property name="text">
+              <string>瓶子直径:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_29">
+             <property name="text">
+              <string>理瓶器减速时间:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="lineEdit_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLabel" name="label_28">
+             <property name="text">
+              <string>Hz</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_30">
+             <property name="text">
+              <string>产品速度:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QRadioButton" name="radioButton_1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>圆瓶</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lineEdit_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>秒</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEdit_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEdit_1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_31">
+             <property name="text">
+              <string>输送线加速时间:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLineEdit" name="lineEdit_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QRadioButton" name="radioButton_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>方瓶</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item row="0" column="1" rowspan="2">
          <widget class="QGroupBox" name="groupBox_3">
           <property name="title">
@@ -656,34 +656,6 @@
              <property name="text">
               <string>输送线变频器品牌</string>
              </property>
-            </widget>
-           </item>
-           <item row="10" column="3">
-            <widget class="QComboBox" name="comboBox_2">
-             <item>
-              <property name="text">
-               <string>丹佛斯</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>台达</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="10" column="1">
-            <widget class="QComboBox" name="comboBox">
-             <item>
-              <property name="text">
-               <string>丹佛斯</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>台达</string>
-              </property>
-             </item>
             </widget>
            </item>
            <item row="11" column="1">
@@ -707,13 +679,6 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_42">
-             <property name="text">
-              <string>理瓶器启动延迟</string>
-             </property>
-            </widget>
-           </item>
            <item row="13" column="0">
             <widget class="QCheckBox" name="checkBox">
              <property name="text">
@@ -721,8 +686,19 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_32"/>
+           <item row="10" column="1">
+            <widget class="QComboBox" name="comboBox">
+             <item>
+              <property name="text">
+               <string>丹佛斯</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>台达</string>
+              </property>
+             </item>
+            </widget>
            </item>
            <item row="13" column="2">
             <widget class="QRadioButton" name="radioButton_9">
@@ -737,13 +713,6 @@
              </property>
             </widget>
            </item>
-           <item row="10" column="2">
-            <widget class="QLabel" name="label_50">
-             <property name="text">
-              <string>理瓶器变频器品牌</string>
-             </property>
-            </widget>
-           </item>
            <item row="14" column="0">
             <widget class="QCheckBox" name="checkBox_2">
              <property name="text">
@@ -751,18 +720,36 @@
              </property>
             </widget>
            </item>
-           <item row="14" column="3">
-            <widget class="QPushButton" name="pushButton_save">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+           <item row="10" column="2">
+            <widget class="QLabel" name="label_50">
              <property name="text">
-              <string>保存</string>
+              <string>理瓶器变频器品牌</string>
              </property>
             </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_42">
+             <property name="text">
+              <string>理瓶器启动延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="3">
+            <widget class="QComboBox" name="comboBox_2">
+             <item>
+              <property name="text">
+               <string>丹佛斯</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>台达</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lineEdit_32"/>
            </item>
            <item row="14" column="1">
             <widget class="QPushButton" name="SureButton">
@@ -774,6 +761,43 @@
              </property>
              <property name="text">
               <string>确定</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QLabel" name="label_52">
+             <property name="text">
+              <string>连续倒瓶报警数量</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="label_44">
+             <property name="text">
+              <string>瓶底光源吹气时长</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QLineEdit" name="lineEdit_39"/>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLineEdit" name="lineEdit_37"/>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLabel" name="label_47">
+             <property name="text">
+              <string>理瓶器停止延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="3">
+            <widget class="QLineEdit" name="lineEdit_40"/>
+           </item>
+           <item row="6" column="2">
+            <widget class="QLabel" name="label_27">
+             <property name="text">
+              <string>输送线电机最大频率</string>
              </property>
             </widget>
            </item>
@@ -790,45 +814,35 @@
              </property>
             </widget>
            </item>
-           <item row="13" column="1">
-            <widget class="QLabel" name="label_24">
+           <item row="6" column="3">
+            <widget class="QLineEdit" name="lineEdit_26"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_45">
              <property name="text">
-              <string/>
+              <string>前倒瓶剔除编码器延迟</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_38"/>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_41">
+             <property name="text">
+              <string>输送线停止延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_23">
+             <property name="text">
+              <string>连续不踢废数量</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QLineEdit" name="lineEdit_34"/>
            </item>
            <item row="3" column="1">
             <widget class="QLineEdit" name="lineEdit_36"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_43">
-             <property name="text">
-              <string>瓶底光源吹气间隔</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="label_46">
-             <property name="text">
-              <string>前倒瓶剔除吹气时长</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="QLineEdit" name="lineEdit_39"/>
-           </item>
-           <item row="3" column="3">
-            <widget class="QLineEdit" name="lineEdit_37"/>
-           </item>
-           <item row="3" column="2">
-            <widget class="QLabel" name="label_44">
-             <property name="text">
-              <string>瓶底光源吹气时长</string>
-             </property>
-            </widget>
            </item>
            <item row="7" column="1">
             <widget class="QLineEdit" name="lineEdit_21">
@@ -840,57 +854,43 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_23">
-             <property name="text">
-              <string>连续不踢废数量</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="3">
-            <widget class="QLineEdit" name="lineEdit_26"/>
-           </item>
-           <item row="7" column="2">
-            <widget class="QLabel" name="label_52">
-             <property name="text">
-              <string>连续倒瓶报警数量</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_45">
-             <property name="text">
-              <string>前倒瓶剔除编码器延迟</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QLabel" name="label_27">
-             <property name="text">
-              <string>输送线电机最大频率</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="3">
-            <widget class="QLineEdit" name="lineEdit_40"/>
-           </item>
-           <item row="4" column="2">
-            <widget class="QLabel" name="label_47">
-             <property name="text">
-              <string>理瓶器停止延迟</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="QLineEdit" name="lineEdit_34"/>
-           </item>
            <item row="6" column="1">
             <widget class="QLineEdit" name="lineEdit_35"/>
            </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_41">
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_46">
              <property name="text">
-              <string>输送线停止延迟</string>
+              <string>前倒瓶剔除吹气时长</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QLabel" name="label_24">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_38"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_43">
+             <property name="text">
+              <string>瓶底光源吹气间隔</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="3">
+            <widget class="QPushButton" name="pushButton_save">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>保存</string>
              </property>
             </widget>
            </item>
@@ -906,7 +906,7 @@
           <property name="title">
            <string>系统自定义报警设置</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,7">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,7,0">
            <item>
             <widget class="QWidget" name="widget_2" native="true">
              <property name="sizePolicy">
@@ -935,6 +935,16 @@
              </property>
             </spacer>
            </item>
+           <item>
+            <widget class="QLabel" name="label_54">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -947,34 +957,26 @@
           <property name="title">
            <string>PLC报警设置</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="7,3">
+          <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0">
            <item>
-            <widget class="QWidget" name="widget_4" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+            <widget class="QScrollArea" name="scrollArea">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
              </property>
-             <layout class="QGridLayout" name="gridLayout_14">
-              <item row="0" column="0">
-               <layout class="QGridLayout" name="gridLayout_7"/>
-              </item>
-             </layout>
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>301</width>
+                <height>591</height>
+               </rect>
+              </property>
+             </widget>
             </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </widget>

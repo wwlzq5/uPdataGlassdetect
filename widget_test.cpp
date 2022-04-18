@@ -94,7 +94,7 @@ WidgetTest::~WidgetTest()
 }
 void WidgetTest::slot_readIoCard()
 {
-	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
+	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2 && pMainFrm->m_sRunningInfo.m_bCheck && pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
 		nTestCounter.lock();
 		int nCheckNum = m_vIOCard->ReadCounter(3);

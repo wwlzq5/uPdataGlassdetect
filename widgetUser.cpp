@@ -14,7 +14,9 @@ UserWidget::UserWidget(QWidget *parent)
 	iUserPerm = false;
 	initial();
 	QPixmap pixmap = QPixmap(":/sys/UserBeforeLogin");
-	ui.pushButton_image->setIcon(pixmap);
+	ui.pushButton_image->setStyleSheet("QPushButton{border-image: url(:/sys/UserBeforeLogin)}");
+	//ui.pushButton_image->setMaximumHeight(200);
+	//ui.pushButton_image->setIcon(pixmap);
 	ui.groupBox->setStyleSheet("QGroupBox{background:transparent;border:2px solid blue}");
 	setFixedSize(350,250);
 	/*ShowInterfance();*/

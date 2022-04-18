@@ -15,11 +15,6 @@ public:
 	MyCameraPoButton(QWidget *parent = 0);
 	~MyCameraPoButton();
 	int iNumber;//当前选择行
-signals:
-	void signals_showCameraPo(int);
-public slots:
-	void slots_showCameraPo();
-
 };
 
 class WidgetManagement : public QWidget
@@ -43,9 +38,6 @@ public:
 	void DeleteCate(QString strDirPath);
 	void BackupCate(QString strDirPath,QString strSrcPath,int = 0);
 	bool leaveWidget();
-
-	void initCameraPositionWidget();
-	void intoCameraPositionWidget();
 	void SeverAdd(QString);
 	void SeverDelete(QString);
 	void SeverSelect(QString);
@@ -53,9 +45,6 @@ signals:
 	void signals_clearTable();
 public slots:
 	void slots_intoWidget();
-	void slots_CameraPositionWidgetOK();
-	void slots_CameraPositionWidgetCancel();
-
 private slots:
 	void slots_cellClicked(int row,int col);
 	void slots_new();
@@ -65,7 +54,6 @@ private slots:
 	void slots_export();
 	void slots_import();
 	void slots_action_selectImage();
-	void slots_showCameraPo(int);
 public:
 	WidgetMyCellWidget *cellWidget;
 private:

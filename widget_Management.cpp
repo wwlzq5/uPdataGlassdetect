@@ -12,22 +12,14 @@
 
 extern GlasswareDetectSystem *pMainFrm;
 
-MyCameraPoButton::MyCameraPoButton(QWidget *parent)
-	: QPushButton(parent)
-
+MyCameraPoButton::MyCameraPoButton(QWidget *parent): QPushButton(parent)
 {
-	connect(this,SIGNAL(clicked()),this,SLOT(slots_showCameraPo()));
 
 }
 MyCameraPoButton::~MyCameraPoButton()
 {
 
 }
-void MyCameraPoButton::slots_showCameraPo()
-{
-	emit signals_showCameraPo(iNumber);
-}
-
 WidgetManagement::WidgetManagement(QWidget *parent)
 	: QWidget(parent)
 {
@@ -53,12 +45,7 @@ WidgetManagement::WidgetManagement(QWidget *parent)
 	connect(ui.btnImport,SIGNAL(clicked()),this,SLOT(slots_import()));
 
 	connect(this, SIGNAL(signals_clearTable()), pMainFrm->widget_carveSetting->errorList_widget, SLOT(slots_clearTable()));
-	ui.widget_Managment->setVisible(true);
-	ui.widget_CameraPosition->setVisible(false);
-	layoutCameraPo = new QGridLayout();
-	ui.widget_CameraPosition->ui.widget_CameraPosition->setLayout(layoutCameraPo);
 
-	initCameraPositionWidget();
 }
 WidgetManagement::~WidgetManagement()
 {
@@ -68,8 +55,6 @@ void WidgetManagement::slots_intoWidget()
 {
 	iSelectRow = iCurModelRow;
 	ui.widget_Managment->setVisible(true);
-	ui.widget_CameraPosition->setVisible(false);
-
 }
 bool WidgetManagement::leaveWidget()
 {
@@ -108,7 +93,6 @@ void WidgetManagement::UpdateTable()
 		buttonCameraPo->setFont(font1);
 
 		connect(cellWidget->action_selectImage,SIGNAL(triggered()),this,SLOT(slots_action_selectImage()));
-		connect(buttonCameraPo,SIGNAL(signals_showCameraPo(int)),this,SLOT(slots_showCameraPo(int)));
 		if (imageInfo.exists())
 		{
 			QPixmap pixmap;
@@ -136,7 +120,6 @@ void WidgetManagement::UpdateTable()
 	//ui.tableCate->resizeRowsToContents();
 	ui.tableCate->horizontalHeader()->setStretchLastSection(true);//行自动填充宽度
 	iSelectRow = -1;
-
 }
 
 void WidgetManagement::slots_cellClicked(int row,int col)
@@ -283,9 +266,6 @@ void WidgetManagement::SaveModelNeme(QString strDirPath)
 	//写配置文件
 	QSettings modelInfoSet(pMainFrm->m_sConfigInfo.m_strConfigPath,QSettings::IniFormat);
 	modelInfoSet.setIniCodec(QTextCodec::codecForName("GBK"));
-	//modelInfoSet.beginGroup("system");
-	//modelInfoSet.setValue(QString("LastModelName"),(QString)(strDirPath.section("/",-1)));
-	//modelInfoSet.endGroup();
 	QString str = strDirPath.section("/",-1);
 	modelInfoSet.setValue("/system/LastModelName",str);	//读取上次使用模板
 }
@@ -503,86 +483,4 @@ void WidgetManagement::slots_import()
 	iSelectRow = -1;
 	//日志
 	pMainFrm->Logfile.write((tr("Import model:[%1]").arg(strSrcPath.section("/",-1))),OperationLog);
-}
-//相机位置widget
-void WidgetManagement::slots_showCameraPo(int iRow)
-{
-	ui.widget_CameraPosition->setVisible(true);
-	ui.widget_Managment->setVisible(false);
-	iSelectRow = iRow;
-	intoCameraPositionWidget();
-}
-void WidgetManagement::initCameraPositionWidget()
-{
-	for (int i = 0 ;i<pMainFrm->m_sSystemInfo.iRealCamCount;i++)
-	{
-		QLabel *labelCameraNo = new QLabel();
-		listLabelCameraNo.append(labelCameraNo);
-		labelCameraNo->setText(tr("CameraNo:%1").arg(i+1));
-		QLabel labelCameraHeight;
-		labelCameraHeight.setText(tr("Height:"));
-		QLabel labelCameraAngle;
-		labelCameraAngle.setText(tr("Angle:"));
-
-		QDoubleSpinBox *dSpinBoxCameraHeight = new QDoubleSpinBox();
-		listdSpinBoxCameraHeight.append(dSpinBoxCameraHeight);
-		QDoubleSpinBox *dSpinBoxCameraAngle = new QDoubleSpinBox();
-		listdSpinBoxCameraAngle.append(dSpinBoxCameraAngle);
-
-		layoutCameraPo->addWidget(labelCameraNo,i,0);
-		layoutCameraPo->addWidget(&labelCameraHeight,i,1);
-		layoutCameraPo->addWidget(dSpinBoxCameraHeight,i,2);
-		layoutCameraPo->addWidget(&labelCameraAngle,i,3);
-		layoutCameraPo->addWidget(dSpinBoxCameraAngle,i,4);
-
-	}
-	connect(ui.widget_CameraPosition->ui.pushButton_ok,SIGNAL(clicked()),this, SLOT(slots_CameraPositionWidgetOK()));
-	connect(ui.widget_CameraPosition->ui.pushButton_Cancel,SIGNAL(clicked()),this, SLOT(slots_CameraPositionWidgetCancel()));
-}
-void WidgetManagement::intoCameraPositionWidget()
-{
-	if ((iSelectRow > dirList.size()-1)||iSelectRow < 0)
-	{
-		QMessageBox::information(this,tr("Information"),tr("Product model not selected!"));
-		return;
-	}
-	QString strDirPath = dirList.at(iSelectRow).absoluteFilePath();
-	QString strType = (strDirPath.section("/",-1)).toLocal8Bit();
-	strDirPath +=  "/CameraPosition.ini";
-	QSettings setCameraPo(strDirPath,QSettings::IniFormat);
-	ui.widget_CameraPosition->ui.label_Cate->setText(strType);
-	for (int i = 0 ;i<pMainFrm->m_sSystemInfo.iRealCamCount;i++)
-	{
-		double dTempHeight = 1.0*setCameraPo.value(QString("/height/Camera%1").arg(i+1),0).toInt()/100;
-		double dTempAngle = 1.0*setCameraPo.value(QString("/angle/Camera%1").arg(i+1),0).toInt()/100;
-		listdSpinBoxCameraHeight.at(i)->setValue(dTempHeight);
-		listdSpinBoxCameraAngle.at(i)->setValue(dTempAngle);
-	}
-
-}
-
-void WidgetManagement::slots_CameraPositionWidgetOK()
-{
- 	QString strDirPath = dirList.at(iSelectRow).absoluteFilePath()+"/CameraPosition.ini";
-
-	QSettings setCameraPo(strDirPath,QSettings::IniFormat);
-
-	for (int i = 0 ;i<pMainFrm->m_sSystemInfo.iRealCamCount;i++)
-	{
-		double dTempHeight = listdSpinBoxCameraHeight.at(i)->value();
-		setCameraPo.setValue(QString("/height/Camera%1").arg(i+1),dTempHeight*100);
-		double dTempAngle = listdSpinBoxCameraAngle.at(i)->value();;
-		setCameraPo.setValue(QString("/angle/Camera%1").arg(i+1),dTempAngle*100);
-		
-		listdSpinBoxCameraAngle.at(i)->setValue(dTempAngle);
-	}
-	slots_CameraPositionWidgetCancel();
-
-}
-void WidgetManagement::slots_CameraPositionWidgetCancel()
-{
-	ui.widget_CameraPosition->setVisible(false);
-	ui.widget_Managment->setVisible(true);
-// 	listdSpinBoxCameraHeight.clear();
-// 	listdSpinBoxCameraAngle.clear();
 }

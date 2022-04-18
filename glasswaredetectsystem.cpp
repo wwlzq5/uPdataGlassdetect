@@ -335,7 +335,6 @@ void GlasswareDetectSystem::InitParameter()
 	m_sConfigInfo.m_strPLCStatusTypePath = appPath + m_sConfigInfo.m_strPLCStatusTypePath;
 	m_sConfigInfo.m_sAlgFilePath = appPath + m_sConfigInfo.m_sAlgFilePath;
 	m_sConfigInfo.m_sRuntimePath = appPath + m_sConfigInfo.m_sRuntimePath;
-	SaveDataPath=appPath+"./LastData.ini";
 	
 	//初始化相机参数
 	for (int i = 0;i<CAMERA_MAX_COUNT;i++)
@@ -385,6 +384,10 @@ void GlasswareDetectSystem::onServerDataReady()
 			m_sRunningInfo.nGSoap_ErrorCamCount[0]=0;
 			m_sRunningInfo.nGSoap_ErrorTypeCount[2]=0;
 			m_sRunningInfo.nGSoap_ErrorCamCount[2]=0;
+			for(int i=0;i<m_sSystemInfo.iCamCount;i++)
+			{
+				m_sRunningInfo.m_iErrorCamCount[i]=0;
+			}
 			m_sRunningInfo.m_checkedNum = 0;
 			m_sRunningInfo.m_passNum = 0;
 			m_sRunningInfo.m_GSoap_Last_checkedNum = 0;
@@ -1379,7 +1382,20 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 	strValue ="	";
 	strEncoder = QString(tr("Speed:") +m_sRunningInfo.strSpeed+strValue+tr("Coder Number")+":%1").arg(nCodeNum);
 	strTime = strValue+QString(tr("Time:"))+QTime::currentTime().toString() + strValue+sVersion;
+	int tempCamera=0;
+	for(int i=1;i<m_sSystemInfo.iCamCount;i++)
+	{
+		if(m_sRunningInfo.m_iErrorCamCount[tempCamera]<m_sRunningInfo.m_iErrorCamCount[i])
+		{
+			tempCamera = i;
+		}
+	}
 	
+	int CountNumber = m_sRunningInfo.m_checkedNum;
+	if(CountNumber!=0 && m_sRunningInfo.m_bCheck)
+	{
+		strEncoder+=strValue+QString::fromLocal8Bit("相机%1踢废率:%2%").arg(tempCamera+1).arg(QString::number((double)m_sRunningInfo.m_iErrorCamCount[tempCamera]/CountNumber*100,'f',2));
+	}
 	if(surplusDays>0)
 	{
 		labelCoder->setText(strEncoder+strTime+tr("Remaining days of use：%1 ").arg(surplusDays)); //剩余使用天数：%1
@@ -1610,15 +1626,6 @@ void GlasswareDetectSystem::slots_MessageBoxMainThread(s_MSGBoxInfo msgbox)
 {
 	QMessageBox::information(this,msgbox.strMsgtitle,msgbox.strMsgInfo);	
 }
-//释放IO卡
-void GlasswareDetectSystem::ReleaseIOCard()
-{
-	if (m_sSystemInfo.m_bIsIOCardOK)
-	{
-		m_vIOCard[0]->CloseIOCard();
-	}
-	delete m_vIOCard[0];
-}
 // 关闭相机 [11/11/2010 zhaodt]
 void GlasswareDetectSystem::CloseCam()
 {
@@ -1641,9 +1648,25 @@ void GlasswareDetectSystem::CloseCam()
 		}
 	}
 }
-//释放图像资源
-void GlasswareDetectSystem::ReleaseImage()
+//释放所有资源
+void GlasswareDetectSystem::ReleaseAll()
 {
+	m_bIsThreadDead = TRUE;
+	for(int i = 0; i < m_sSystemInfo.iCamCount; i++)
+	{
+		s_Status sReturnStatus = m_cBottleCheck[i].Free();
+		for (int j = 0; j < 256;j++)
+		{
+			delete []m_sCarvedCamInfo[i].sImageLocInfo[j].m_AlgImageLocInfos.sXldPoint.nRowsAry;
+			delete []m_sCarvedCamInfo[i].sImageLocInfo[j].m_AlgImageLocInfos.sXldPoint.nColsAry;
+		}
+	}
+	if (CherkerAry.pCheckerlist != NULL)
+	{
+		delete[] CherkerAry.pCheckerlist;
+	}
+
+
 	for(int i = 0 ; i < m_sSystemInfo.iRealCamCount; i++)
 	{
 		delete m_sRealCamInfo[i].m_pRealImage;
@@ -1662,30 +1685,12 @@ void GlasswareDetectSystem::ReleaseImage()
 			delete m_detectElement[i].ImageNormal->myImage;
 		}
 	}
-}
-//释放所有资源
-void GlasswareDetectSystem::ReleaseAll()
-{
-	m_bIsThreadDead = TRUE;
-	for(int i = 0; i < m_sSystemInfo.iCamCount; i++)
-	{
-		s_Status sReturnStatus = m_cBottleCheck[i].Free();
-		for (int j = 0; j < 256;j++)
-		{
-			delete []m_sCarvedCamInfo[i].sImageLocInfo[j].m_AlgImageLocInfos.sXldPoint.nRowsAry;
-			delete []m_sCarvedCamInfo[i].sImageLocInfo[j].m_AlgImageLocInfos.sXldPoint.nColsAry;
-		}
-	}
-	if (CherkerAry.pCheckerlist != NULL)
-	{
-		delete[] CherkerAry.pCheckerlist;
-	}
-	ReleaseImage();
-}
 
-void GlasswareDetectSystem::directoryChanged(QString path)
-{
-	QMessageBox::information(NULL, tr("Directory change"), path);
+	if (m_sSystemInfo.m_bIsIOCardOK)
+	{
+		m_vIOCard[0]->CloseIOCard();
+	}
+	delete m_vIOCard[0];
 }
 
 //功能：动态切换系统语言
@@ -1806,6 +1811,12 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 	strSession = QString("/system/SeverFailureNum");
 	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
 
+	for (int i=0;i< m_sSystemInfo.iCamCount;i++)
+	{
+		strSession = QString("LastTimeDate/ErrorCamera_%1_count").arg(i);
+		iniDataSet.setValue(strSession,m_sRunningInfo.m_iErrorCamCount[i]);
+	}
+
 	if (ifyanz || QMessageBox::Yes == QMessageBox::question(this,tr("Exit"),
 		tr("Are you sure to exit?"),
 		QMessageBox::Yes | QMessageBox::No))	
@@ -1831,9 +1842,7 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 		}
 		CloseCam();
 		ReleaseAll();
-		ReleaseIOCard();
 		exit(0);
-		//close();
 	}
 }
 int GlasswareDetectSystem::ReadImageSignal(int nImageNum,int cameraID)

@@ -23,7 +23,7 @@ EquipRuntime *EquipRuntime::Instance()
 EquipRuntime::EquipRuntime(QObject *parent)
 	: QObject(parent)
 {
-	LogFileName ="EquipMaintLog.ini";
+	LogFileName ="Config/EquipMaintLog.ini";
 	saveInterval =  HOUR;
 	//saveInterval =  60 * 1000;
 	startTime = QDateTime::currentDateTime();
@@ -175,7 +175,7 @@ void EquipRuntime::Slots_timer()
 			{
 				if (!temp)
 				{
-					//pMainFrm->sVersion =QString("<font style = 'color:red;'> %1 </font>").arg(pMainFrm->m_sRuntimeInfo.AlarmsInfo[i]);//±¨¾¯
+					pMainFrm->sVersion =QString("<font style = 'color:red;'> %1 </font>").arg(pMainFrm->m_sRuntimeInfo.AlarmsInfo[i]);//±¨¾¯
 					temp = true;
 				}
 				m_AlarmsSatus << true;

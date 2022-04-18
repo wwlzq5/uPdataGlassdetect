@@ -4,6 +4,7 @@
 #include <QTranslator>
 #include <QSettings>
 #include <QTextCodec>
+#include <qstring.h>
 //QT系统类型
 #define DAHENGBLPKP_QT			//QT系统时定义该类型，否则注释掉
 #include "glasswaredetectsystem.h"
@@ -21,28 +22,29 @@ static long  __stdcall CrashInfocallback(_EXCEPTION_POINTERS *pexcp);
 //关闭同名死进程
 void KillSameDeathProcess(QString exestr)
 {
-	/*HANDLE handle;
+	HANDLE handle;
 	HANDLE handle1;
 	handle=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
-	PROCESSENTRY32 *info; 
-
-	info=new PROCESSENTRY32;  
-	info->dwSize=sizeof(PROCESSENTRY32); 
-
-	Process32First(handle,info); 
-
+	PROCESSENTRY32 *info;
+	info=new PROCESSENTRY32;
+	info->dwSize=sizeof(PROCESSENTRY32);
+	Process32First(handle,info);
 	do
 	{
-		QString str = QString::fromWCharArray(info->szExeFile);
-		if(exestr==str) 		
-		{ 
+		int iSize;
+		char* pszMultiByte;
+		iSize = WideCharToMultiByte(CP_ACP, 0, info->szExeFile, -1, NULL, 0, NULL, NULL);
+		pszMultiByte = (char*)malloc(iSize * sizeof(char));
+		WideCharToMultiByte(CP_ACP, 0, info->szExeFile, -1, pszMultiByte, iSize, NULL, NULL);
+		QString str = QString(pszMultiByte);
+		if(exestr==str)
+		{
 			handle1=OpenProcess(PROCESS_TERMINATE,FALSE,info->th32ProcessID);
-			TerminateProcess(handle1,0); 			
+			TerminateProcess(handle1,0);
 		}
-	}while (Process32Next(handle,info)!=FALSE); 
-	CloseHandle(handle); */
+	}while (Process32Next(handle,info)!=FALSE);
+	CloseHandle(handle);
 }
-
 //仅运行一次
 bool OnlyRunOnce(QString qstr,QString qstrext)
 {
@@ -57,15 +59,8 @@ bool OnlyRunOnce(QString qstr,QString qstrext)
 		{
 			HWND hRecv = NULL;
 			hRecv = ::FindWindow(NULL,qstr.utf16());
-			//hRecv = ::FindWindow(NULL,QString("GlassDetectSystem").utf16());
 			if (hRecv != NULL)
 			{
-
-				//Qt 无法获取该标记，原因未知，禁止最小化
-				//if (::IsIconic(hRecv))
-				//	::ShowWindow(hRecv,SW_SHOWNORMAL);
-				//::ShowWindow(hRecv,SW_MAXIMIZE);
-				//::SetForegroundWindow(hRecv);
 				::BringWindowToTop(hRecv);
  				return false;
 			}
@@ -94,8 +89,7 @@ int main(int argc, char *argv[])
 	QString exename = exenameext.left(exenameext.lastIndexOf("."));
 	//只运行一个实例
 	if (!OnlyRunOnce(exename,exenameext))
-	{
-//		QMessageBox::information(NULL,QObject::tr("System Prompted"),QObject::tr("Can not run multiple instances！"));//系统提示：系统已经运行，无法重复打开！	
+	{	
 		return 0;
 	}
 	QTranslator translator;

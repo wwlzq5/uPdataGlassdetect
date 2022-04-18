@@ -69,7 +69,7 @@ void LightSource::initConfig()
 	nState = 0;
 	setWindowIcon(QIcon("./Resources/LOGO.png"));
 	setWindowTitle(tr("Light set"));
-	char* szStr = "LED_DIST.dll";
+	char szStr[] = "LED_DIST.dll";
 	WCHAR szTest[256];
 	memset(szTest,0,sizeof(szTest));
 	MultiByteToWideChar(CP_ACP,0,szStr,strlen(szStr)+1,szTest,sizeof(szTest)/sizeof(szTest[0]));

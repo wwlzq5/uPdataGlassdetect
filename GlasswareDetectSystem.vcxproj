@@ -258,7 +258,6 @@
       <SubSystem>Windows</SubSystem>
       <OutputFile>.\runR\GlasswareDetectSystem.exe</OutputFile>
       <AdditionalLibraryDirectories>.\Lib;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>qtmain.lib;comdlg32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <StackReserveSize>0x1000000</StackReserveSize>
     </Link>
@@ -306,7 +305,6 @@
     <ClCompile Include="widgetUser.cpp" />
     <ClCompile Include="widgetwarning.cpp" />
     <ClCompile Include="widget_camera.cpp" />
-    <ClCompile Include="Widget_CameraPosition.cpp" />
     <ClCompile Include="widget_errortype.cpp" />
     <ClCompile Include="Widget_CarveImage.cpp" />
     <ClCompile Include="Widget_CarveSetting.cpp" />
@@ -339,8 +337,6 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Widget_CameraPosition.h">
-    </QtMoc>
     <QtMoc Include="widget_camera.h">
     </QtMoc>
     <QtMoc Include="widget_errortype.h">
@@ -692,8 +688,6 @@
     <QtUic Include="widget_Management.ui">
     </QtUic>
     <QtUic Include="widget_test.ui">
-    </QtUic>
-    <QtUic Include="Widget_CameraPosition.ui">
     </QtUic>
   </ItemGroup>
   <ItemGroup>
