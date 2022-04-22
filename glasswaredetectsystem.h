@@ -91,6 +91,7 @@ signals:
 	void signals_clear();
 	void signals_HideWarning(int);
 	void signals_ConnectSever();
+	void signals_ShowCount(int,int);
 public slots:
 	void slots_turnPage(int current_page, int iPara = 0);
 	void slots_MessageBoxMainThread(s_MSGBoxInfo msgbox);				//子线程弹出对话框

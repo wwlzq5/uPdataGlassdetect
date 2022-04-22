@@ -216,7 +216,15 @@ void MyImageShowItem::paintEvent(QPaintEvent *event)
 		painter.setPen(pen);
 	}
 	painter.drawText(0, 80, tr("Result:")+strResult);
-
+	int CountNumber = pMainFrm->m_sRunningInfo.m_checkedNum;
+	int FailNumber = 0;//m_sRunningInfo.m_iErrorCamCount[iCameraNo];
+	if(CountNumber!=0 && pMainFrm->m_sRunningInfo.m_bCheck)
+	{
+		FailNumber = pMainFrm->m_sRunningInfo.m_iErrorCamCount[iCameraNo];
+		painter.drawText(0, 100, tr("Kick Rate:%1%").arg(QString::number((double)FailNumber/CountNumber*100,'f',2)));
+	}else{
+		painter.drawText(0, 100, tr("Kick Rate:%1%").arg(QString::number((double)FailNumber,'f',2)));
+	}
 	// Æ¿µ×Ä£µã£¬20180528£¬by wenfan
 	/*int nMouldID = strMouldID.toInt();
 	if(strCamera=="8")

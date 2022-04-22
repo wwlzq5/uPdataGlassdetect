@@ -39,13 +39,19 @@ void DetectThread::ProcessHanlde(int Camera)
 		pMainFrm->nQueue[Camera].mDetectLocker.unlock();
 		iCamera = DetectElement.iCameraNormal;
 		//旋转原始图片
-		
-		long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
-		memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),DetectElement.ImageNormal->SourceImage->bits(),lImageSize);
-
+		if (90 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle || 180 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle || 270 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle)
+		{
+			pMainFrm->RoAngle(DetectElement.ImageNormal->SourceImage->bits(), pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(), \
+				DetectElement.ImageNormal->nWidth, DetectElement.ImageNormal->nHeight, pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle);
+		}
+		else
+		{
+			long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
+			memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(), DetectElement.ImageNormal->SourceImage->bits(), lImageSize);
+		}
 		//裁剪原始图片
 		pMainFrm->m_mutexmCarve[iCamera].lock();
-		lImageSize = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight;
+		long lImageSize = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight;
 		if (lImageSize != DetectElement.ImageNormal->myImage->byteCount())
 		{
 			pMainFrm->Logfile.write(tr("ImageSize unsuitable, Thread:Grab, camera:%1.lImageSize = %2,myImage byteCount = %3").arg(iCamera).arg(lImageSize).arg(DetectElement.ImageNormal->myImage->byteCount()),AbnormityLog);

@@ -166,14 +166,6 @@ void WidgetCarveSetting::slots_turnCameraPage(int index)
 	tempCarveInfo->ui.spinBox_Ro->setValue(pMainFrm->m_sCarvedCamInfo[index].m_iImageAngle);
 
 	//更新相机信息
-	if (1 == pMainFrm->m_sCarvedCamInfo[index].m_iTrigger)
-	{
-		tempCarveInfo->ui.comboBox_triggerType->setCurrentIndex(1);
-	}
-	else
-	{
-		tempCarveInfo->ui.comboBox_triggerType->setCurrentIndex(0);
-	}
 	iCameraNo = index;
 	//image_widget->showMaxImage(iCameraNo);
 	tempCarveInfo->ui.spinBox_exposureTime->setValue(pMainFrm->m_sRealCamInfo[pMainFrm->m_sCarvedCamInfo[index].m_iToRealCamera].m_iShuter);

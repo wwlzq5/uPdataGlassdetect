@@ -1,6 +1,5 @@
 #ifndef WIDGET_CARVEIMAGE_H
 #define WIDGET_CARVEIMAGE_H
-
 #include <QWidget>
 #include <QGraphicsItem>
 #include <QGraphicsScene>
@@ -12,8 +11,6 @@
 #include "cmygraphicsview.h"
 #include "rotemptybottle.h"
 #include "DHBaseWidget.h"
-
-
 class Widget_CarveImage : public QWidget
 {
 	Q_OBJECT
@@ -39,7 +36,6 @@ public:
 		DRAW_Status_MODIFYRIGHTBUTTOM,				//ÐÞ¸Ä
   		//DRAW_Status_ZOOM,				//Ëõ·Å
 	};
-
 public:
 	DHBaseWidget *pBaseWidget;
 	QVBoxLayout *verticalLayout;
@@ -107,11 +103,8 @@ private:
 	QPoint stopPoint;
 	QPoint maxPoint;
 	QPoint m_HVPoint;
-
 	QPoint tempPoint;
 	QPoint temPoint;
-	
-	
 
 	int iImageWidth;
 	int iImageHeight;
@@ -129,7 +122,6 @@ private:
 	e_DrawStatus m_eDrawStatus;	//»æÖÆ×´Ì¬
 	double fCamScale;
 	double fLastCamScale;
-
 
 	CMyGraphicsView *pView;
 	QGraphicsScene *pCamScene;
@@ -170,6 +162,7 @@ private:
 	QSpinBox *spinBox_Y;
 	QSpinBox *spinBox_W;
 	QSpinBox *spinBox_H;
+	
 public:
 	int iIsTestGrey;
 	int iCameraNo;

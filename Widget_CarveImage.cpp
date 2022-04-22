@@ -22,9 +22,6 @@ Widget_CarveImage::Widget_CarveImage(QWidget *parent)
 
 	pWidgetCarveInfo->ui.widget_CameraInfo->setVisible(true);
 	pWidgetCarveInfo->ui.widget_GrayTest->setVisible(false);
-	pWidgetCarveInfo->ui.comboBox_triggerType->setCurrentIndex(1);
-	
-
 	//pWidgetCarveInfo->ui.qwtPlot_sharpness->insertLegend(new QwtLegend(),QwtPlot::BottomLegend); 
 
 	m_eStatus = DRAWED;
@@ -41,7 +38,7 @@ Widget_CarveImage::Widget_CarveImage(QWidget *parent)
 	timerTest = new QTimer(this);
 	connect(timerTest, SIGNAL(timeout()), this, SLOT(slots_timerTest()));   
 	timerUpdateGrayInfo = new QTimer(this);
-	timerUpdateGrayInfo->setInterval(500);
+	timerUpdateGrayInfo->setInterval(1000);
 	connect(timerUpdateGrayInfo, SIGNAL(timeout()), this, SLOT(slots_UpdateGrayInfo()));
 }
 
@@ -1099,17 +1096,24 @@ double Widget_CarveImage::AverageGray(uchar* pRes,int iResWidth,int iResHeight,i
 		double dSum = 0;
 		double dAverageGray = 0;
 		uchar* pTempRes = pRes+iResWidth*(iTarY)+iTarX;
+		pWidgetCarveInfo->spLineSeries1->clear();
+		double zSum = 0;
 		for(int i = 0; i < iTarHeight; i++)
 		{
 			for (int j = 0;j < iTarWidth;j++)
 			{
 				dSum += *(pTempRes+j);
+				zSum += *(pTempRes + j);
 			}
-//			pTemp += iTarWidth;
 			pTempRes += iResWidth;
+			if (i % 10 == 0)
+			{
+				pWidgetCarveInfo->spLineSeries1->append(zSum / iTarWidth, iTarHeight-i);
+			}
+			zSum = 0;
 		}
 		dAverageGray = dSum/(iTarWidth*iTarHeight);
-
+		pWidgetCarveInfo->setImageHeight(iTarHeight);
 		return dAverageGray;
 	}
 	catch(...)
@@ -1129,34 +1133,12 @@ double Widget_CarveImage::EdgeSpan(uchar* pRes,int iResWidth,int iResHeight,int 
 	QVector <double> GrayValue;
 	QVector <double> SharpValue;
 	QVector <double> testWidth;
-	QVector <double> ReferenceLineA;
-	QVector <double> ReferenceLineB;
-	QVector <double> ReferenceLineC;
 	double dMaxSlope = 0;
 	double dSharp = 0;
 	if ((iTarWidth)<10)
 	{
 		return -1;//矩形太窄
 	}
-
-	/*int middleLine = iTarY + iTarHeight/2;
-	uchar* pTempRes = pRes+iResWidth*(middleLine)+iTarX;
-
-	for (int i = 0;i<iTarWidth;i++)
-	{
-	GrayValue.push_back(*(pTempRes + i));
-
-	if (i<iTarWidth-1)
-	{
-	dSharp = *(pTempRes + i+1)-*(pTempRes + i);
-	SharpValue.push_back(fabs(dSharp));
-	}
-	testWidth.push_back(i);
-	if (dMaxSlope < fabs(dSharp))
-	{
-	dMaxSlope = fabs(dSharp);
-	}
-	}*/
 	int middleLine = iTarY ;//+ iTarHeight/2;
 	uchar* pTempRes = pRes+iResWidth*(middleLine)+iTarX;
 
@@ -1176,18 +1158,12 @@ double Widget_CarveImage::EdgeSpan(uchar* pRes,int iResWidth,int iResHeight,int 
 		pTempRes += iResWidth;
 		GrayValue.push_front((int)sumGray/iTarWidth);
 		SharpValue.push_back(fabs(sumSharp/iTarWidth));
-		ReferenceLineA.push_back(140);
-		ReferenceLineB.push_back(170);
-		ReferenceLineC.push_back(200);
 		testWidth.push_back(j);
-
 		if (dMaxSlope < fabs(sumSharp))
 		{
 			dMaxSlope = fabs(sumSharp);
 		}
 	}
-	
-	//pCurveSarpness->setSamples(SharpValue,testWidth);
 	return dMaxSlope;
 }
 void Widget_CarveImage::slots_StressModeChanged(int index)
@@ -1444,7 +1420,7 @@ void Widget_CarveImage::slots_setToCamera()
 	}*/
 	int iCameraSN =  pMainFrm->m_sCarvedCamInfo[iCameraNo].m_iToRealCamera;
 	int iShuterTime = pWidgetCarveInfo->ui.spinBox_exposureTime->text().toInt();
-	int iTriggerType = pWidgetCarveInfo->ui.comboBox_triggerType->currentIndex();
+	
 	//曝光不一样才修改到相机
 	if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iShuter != iShuterTime)
 	{
@@ -1542,7 +1518,7 @@ void Widget_CarveImage::slots_setToCamera()
 	}
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
 	QTimer::singleShot(2000,this,SLOT(SetToCameraStatus()));
-	pMainFrm->Logfile.write(QString("set camera%1 param,TriggerType:%2,ShuterTime:%3,TriggerDelay:%4!").arg(iCameraSN).arg(iTriggerType).arg(iShuterTime).arg(iTriggerDelay),OperationLog);
+	pMainFrm->Logfile.write(QString("set camera%1 param,ShuterTime:%2,TriggerDelay:%3!").arg(iCameraSN).arg(iShuterTime).arg(iTriggerDelay),OperationLog);
 }
 void Widget_CarveImage::slots_startTest()
 {
@@ -1665,12 +1641,19 @@ void Widget_CarveImage::slots_readDelayPara()
 }
 void Widget_CarveImage::slots_UpdateGrayInfo()
 {
+	double dAverageGray = 0;
 	int iRectWidth = (spinBox_W->value())/8*8;
 	int iRectHeight = (spinBox_H->value())/8*8;
 	int i_ImageX = spinBox_X->value();
 	int i_ImageY = pMainFrm->m_sRealCamInfo[iCameraNo].m_iImageHeight-spinBox_Y->value()-spinBox_H->value();
-	double dAverageGray = AverageGray(pImageShown->bits(),pImageShown->width(),pImageShown->height(),i_ImageX,i_ImageY,iRectWidth,iRectHeight);
+	if (iRectHeight != 0 && iRectWidth != 0)
+	{
+		dAverageGray = AverageGray(pImageShown->bits(), pImageShown->width(), pImageShown->height(), i_ImageX, i_ImageY, iRectWidth, iRectHeight);
+	}
 	pWidgetCarveInfo->ui.lineEdit_gray->setText(QString::number(dAverageGray));
+	
 	double iEdgeSpan = EdgeSpan(pImageShown->bits(),pImageShown->width(),pImageShown->height(),i_ImageX,i_ImageY,iRectWidth,iRectHeight);
 	pWidgetCarveInfo->ui.lineEdit_sharpness->setText(QString::number(iEdgeSpan));
+
+	pWidgetCarveInfo->ui.CharViewWidget->chart()->legend()->setAlignment(Qt::AlignBottom);
 }

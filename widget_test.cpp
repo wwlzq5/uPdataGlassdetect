@@ -500,9 +500,9 @@ void WidgetTest::slots_CameraOffAreet()
 		bool ret = true;
 		try
 		{
-			pMainFrm->mutexDetectElement[i].lock();
-			ret = ((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[i].m_pGrabber)->MERGetParamInt(MERExposure,temp,temp,temp);
-			pMainFrm->mutexDetectElement[i].unlock();
+			//pMainFrm->mutexDetectElement[i].lock();
+			ret = ((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[i].m_pGrabber)->MERGetParamInt(MERGain,temp,temp,temp);
+			//pMainFrm->mutexDetectElement[i].unlock();
 		}
 		catch(...)
 		{

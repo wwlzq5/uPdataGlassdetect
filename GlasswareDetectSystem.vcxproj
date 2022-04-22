@@ -110,7 +110,7 @@
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>5.12.9_msvc2017_64</QtInstall>
-    <QtModules>core;sql;network;gui;xmlpatterns;widgets</QtModules>
+    <QtModules>core;sql;network;gui;xmlpatterns;widgets;charts</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QtModules>core;sql;network;gui;xmlpatterns;widgets</QtModules>
@@ -245,7 +245,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName);.\;.\Inc;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtNetwork;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtSql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName);.\;.\Inc;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtNetwork;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtSql;C:\Qt\Qt5.12.9\5.12.9\msvc2017_64\include\QtCharts;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>

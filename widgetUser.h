@@ -44,6 +44,7 @@ private slots:
 	void slots_NewUser();
 	void slots_deleteUser();
 	void slots_OnlyChangePermission_Checked(int);
+	void slots_ShowCount(int,int);
 };
 
 #endif // USERWIDGET_H

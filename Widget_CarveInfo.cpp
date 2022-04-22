@@ -37,15 +37,70 @@ Widget_CarveInfo::Widget_CarveInfo(QWidget *parent)
 	ui.pushButton_copyROI->setFocusPolicy(Qt::NoFocus);
 	ui.pushButton_save->setFocusPolicy(Qt::NoFocus);
 
-	connect(toolButtonToCamera,SIGNAL(clicked()),this,SLOT(TrunCameraSet()));
-	connect(toolButtonToImage,SIGNAL(clicked()),this,SLOT(TrunImageSet()));
-	connect(ui.pushButton_setToCamera_2,SIGNAL(clicked()),ui.pushButton_setToCamera,SLOT(click()));
-	connect(ui.pushButton_setToCamera_2,SIGNAL(clicked()),this,SLOT(slot_setToCamera()));
+	connect(toolButtonToCamera, SIGNAL(clicked()), this, SLOT(TrunCameraSet()));
+	connect(toolButtonToImage, SIGNAL(clicked()), this, SLOT(TrunImageSet()));
+	connect(ui.pushButton_setToCamera_2, SIGNAL(clicked()), ui.pushButton_setToCamera, SLOT(click()));
+	connect(ui.pushButton_setToCamera_2, SIGNAL(clicked()), this, SLOT(slot_setToCamera()));
 	ui.stackedWidget->setCurrentIndex(0);
+	RepaintImage();
 }
 
 Widget_CarveInfo::~Widget_CarveInfo()
 {
+}
+void Widget_CarveInfo::setImageHeight(int nHeight)
+{ 
+	axisY->setRange(0, nHeight);
+	spLineSeries2->clear();
+	spLineSeries3->clear();
+	spLineSeries4->clear();
+	spLineSeries2->append(140, 0);
+	spLineSeries2->append(140, nHeight);
+	spLineSeries3->append(170, 0);
+	spLineSeries3->append(170, nHeight);
+	spLineSeries4->append(200, 0);
+	spLineSeries4->append(200, nHeight);
+}
+void Widget_CarveInfo::RepaintImage()
+{
+	//重绘曲线图
+	ui.CharViewWidget->setRenderHint(QPainter::Antialiasing);
+	//ui.CharViewWidget->chart()->setTheme(QChart::ChartThemeLight);
+	//增加参考线
+	spLineSeries1 = new QSplineSeries;
+	spLineSeries2 = new QSplineSeries;
+	spLineSeries3 = new QSplineSeries;
+	spLineSeries4 = new QSplineSeries;
+	spLineSeries2->setColor(Qt::green);
+	spLineSeries3->setColor(Qt::green);
+	spLineSeries4->setColor(Qt::green);
+	
+	spLineSeries1->setName(QString::fromLocal8Bit("平均灰度"));
+	spLineSeries4->setName(QString::fromLocal8Bit("参考线"));
+	axisX = new QValueAxis;
+	axisX->setRange(110,230);
+	axisX->setTickCount(5);
+	axisX->setMinorTickCount(5);
+	axisY = new QValueAxis;
+	axisY->setRange(0, 8);
+	//axisX->setTitleText("X Gray"); //设置X轴的标题
+	axisX->setLabelFormat("%d");
+	axisY->setLabelFormat("%d");
+	ui.CharViewWidget->chart()->addSeries(spLineSeries1);
+	ui.CharViewWidget->chart()->addSeries(spLineSeries2);
+	ui.CharViewWidget->chart()->addSeries(spLineSeries3);
+	ui.CharViewWidget->chart()->addSeries(spLineSeries4);
+	ui.CharViewWidget->chart()->addAxis(axisX, Qt::AlignBottom);
+	ui.CharViewWidget->chart()->addAxis(axisY, Qt::AlignLeft);
+	spLineSeries1->attachAxis(axisX);
+	spLineSeries1->attachAxis(axisY);
+	spLineSeries2->attachAxis(axisX);
+	spLineSeries2->attachAxis(axisY);
+	spLineSeries3->attachAxis(axisX);
+	spLineSeries3->attachAxis(axisY);
+	spLineSeries4->attachAxis(axisX);
+	spLineSeries4->attachAxis(axisY);
+	ui.CharViewWidget->chart()->legend()->setAlignment(Qt::AlignBottom);
 }
 void Widget_CarveInfo::slot_setToCamera()
 {

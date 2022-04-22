@@ -117,6 +117,18 @@ void UserWidget::initialUserInfo()
 	ui.comboBoxUser->setCurrentIndex(strUserList.size()-1);
 	nPermission = nPermissionsList.at(strUserList.size()-1);
 }
+void UserWidget::slots_ShowCount(int AllCount,int FailCount)
+{
+	ui.label->setText(QString::fromLocal8Bit("过检总数:%1").arg(AllCount));
+	ui.label_2->setText(QString::fromLocal8Bit("踢废总数:%1").arg(FailCount));
+	double rate = 0;
+	if(AllCount != 0)
+	{
+		rate = (double)FailCount/AllCount*100;
+		ui.label_3->setText(QString::fromLocal8Bit("踢废率:%1%").arg(QString::number(rate,'f',2)));
+	}
+	ui.label_3->setText(QString::fromLocal8Bit("踢废率:%1%").arg(QString::number(rate,'f',2)));
+}
 void UserWidget::slots_login()
 {
 	bool isSuccessed=false;
