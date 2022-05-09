@@ -31,6 +31,7 @@ public slots:
 	void slots_AutoAlert(int);
 	void slots_showPamSet();
 	void slots_HidePicture();
+	void slots_UDPSocketStataChanged(QAbstractSocket::SocketState socketState);
 public:
 	Ui::widget_plc ui;
 signals:

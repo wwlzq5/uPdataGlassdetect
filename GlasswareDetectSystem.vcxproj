@@ -111,6 +111,7 @@
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>5.12.9_msvc2017_64</QtInstall>
     <QtModules>core;sql;network;gui;xmlpatterns;widgets;charts</QtModules>
+    <QtDeploy>true</QtDeploy>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QtModules>core;sql;network;gui;xmlpatterns;widgets</QtModules>

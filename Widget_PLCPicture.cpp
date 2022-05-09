@@ -236,20 +236,17 @@ void Widget_PLCPicture::slots_updatePLCInfo(WORD sPLCStatus)
 	{
 		if(sPLCStatus >> i & 0x01)
 		{
-			listStatuslabel.at(i)->BlinkCameraStatus(1);//1是绿色
+			listStatuslabel.at(i)->BlinkCameraStatus(1);//1是红色
+			QTimer::singleShot(500,this,SLOT(SetPLCEleStatus(i)));
 		}else
 		{
-			listStatuslabel.at(i)->BlinkCameraStatus(0);//0是红色
+			listStatuslabel.at(i)->BlinkCameraStatus(0);//0是绿色
 		}
 	}
-	QTimer::singleShot(500,this,SLOT(SetPLCEleStatus()));
 }
-void Widget_PLCPicture::SetPLCEleStatus()
+void Widget_PLCPicture::SetPLCEleStatus(int i)
 {
-	for(int i=0;i<10;i++)
-	{
-		listStatuslabel.at(i)->BlinkCameraStatus(0);//0是红色
-	}
+	listStatuslabel.at(i)->BlinkCameraStatus(1);//0是绿色
 }
 SensorStatusLabel::SensorStatusLabel(QWidget *parent)
 	:CameraStatusLabel(parent)
@@ -360,7 +357,7 @@ void Widget_PLCImage::contextMenuEvent(QContextMenuEvent *event)
 }
 void Widget_PLCImage::paintEvent(QPaintEvent *event)
 {
-	QPixmap pixmap("./Resources/layout.bmp");
+	QPixmap pixmap("./layout.bmp");
 	QPainter painter(this);
 	painter.drawPixmap(QRect(0, 0, geometry().width(), geometry().height()),pixmap);
 }

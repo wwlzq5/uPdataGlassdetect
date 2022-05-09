@@ -25,41 +25,32 @@
            <string>阈值设置</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
-           <item row="8" column="3">
-            <widget class="QPushButton" name="pushButton_read">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+           <item row="8" column="2">
+            <widget class="QLabel" name="label_55">
              <property name="text">
-              <string>读取</string>
+              <string>半瓶剔除编码器延迟</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="1">
-            <widget class="QLineEdit" name="lineEdit_20">
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_56">
+             <property name="text">
+              <string>半瓶剔除测试值</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QLineEdit" name="lineEdit_42">
              <property name="enabled">
               <bool>false</bool>
              </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
             </widget>
            </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_20">
-             <property name="text">
-              <string>后堵瓶测试值</string>
+           <item row="6" column="1">
+            <widget class="QLineEdit" name="lineEdit_18">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
-            </widget>
-           </item>
-           <item row="7" column="3">
-            <widget class="QLineEdit" name="lineEdit_19">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -79,19 +70,6 @@
             <widget class="QLabel" name="label_2">
              <property name="text">
               <string>前倒瓶阈值</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_18">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
              </property>
             </widget>
            </item>
@@ -132,8 +110,8 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="3">
-            <widget class="QLineEdit" name="lineEdit_15">
+           <item row="7" column="3">
+            <widget class="QLineEdit" name="lineEdit_19">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -142,42 +120,31 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="2">
-            <widget class="QLabel" name="label_15">
+           <item row="7" column="1">
+            <widget class="QLineEdit" name="lineEdit_20">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_20">
              <property name="text">
-              <string>队列3阈值下限</string>
+              <string>后堵瓶测试值</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="3">
-            <widget class="QLineEdit" name="lineEdit_14">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_13">
+             <property name="enabled">
+              <bool>false</bool>
              </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="QLabel" name="label_19">
-             <property name="text">
-              <string>队列3阈值上限</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="3">
-            <widget class="QLineEdit" name="lineEdit_12">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="QLineEdit" name="lineEdit_11">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -193,15 +160,49 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="label_14">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
              <property name="text">
-              <string>队列2阈值上限</string>
+              <string>队列1测试值</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_13">
+           <item row="5" column="2">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>队列3阈值下限</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_17">
+             <property name="text">
+              <string>队列1阈值上限</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="3">
+            <widget class="QLineEdit" name="lineEdit_15">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QLineEdit" name="lineEdit_10">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEdit_8">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -220,8 +221,25 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="3">
-            <widget class="QLineEdit" name="lineEdit_10">
+           <item row="2" column="3">
+            <widget class="QLineEdit" name="lineEdit_11">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>队列2阈值上限</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLineEdit" name="lineEdit_12">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -247,18 +265,15 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="label_17">
+           <item row="4" column="2">
+            <widget class="QLabel" name="label_19">
              <property name="text">
-              <string>队列1阈值上限</string>
+              <string>队列3阈值上限</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit_8">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
+           <item row="4" column="3">
+            <widget class="QLineEdit" name="lineEdit_14">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -267,12 +282,21 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
+           <item row="9" column="3">
+            <widget class="QPushButton" name="pushButton_read">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="text">
-              <string>队列1测试值</string>
+              <string>读取</string>
              </property>
             </widget>
+           </item>
+           <item row="8" column="3">
+            <widget class="QLineEdit" name="lineEdit_41"/>
            </item>
           </layout>
          </widget>

@@ -21,7 +21,7 @@ public:
 	QStringList strPasswordList;
 	QList<int> nPermissionsList;
 signals:
-	void signal_LoginState(int nPerm,bool isUnlock);
+	void signal_LoginState(int nPerm,bool isUnlock,QString);
 private:
 	QString strUserName;
 	QString PassWord;

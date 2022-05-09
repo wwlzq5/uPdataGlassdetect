@@ -48,7 +48,7 @@
      <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>-337</x>
         <y>0</y>
         <width>1707</width>
         <height>857</height>
@@ -1083,13 +1083,6 @@ background:#FFFFFF;
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QPushButton" name="pushButton">
-                <property name="text">
-                 <string>网络重连</string>
                 </property>
                </widget>
               </item>

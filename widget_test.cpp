@@ -38,7 +38,6 @@ WidgetTest::WidgetTest(QWidget *parent)
 
 	//瓶口瓶底增加控件控制PLC通讯
 	connect(ui.pushButton_set,SIGNAL(clicked()),this,SLOT(slot_openPlcSet()));
-	connect(ui.pushButton,SIGNAL(clicked()),this,SLOT(slot_ConnectSever()));
 
 	ui.lineEdit ->setText(QString::number(pMainFrm->m_sSystemInfo.m_iTrackNumber));
 	ui.lineEdit_2->setText(QString::number(pMainFrm->m_sSystemInfo.m_iIsTrackStatistics));
@@ -110,17 +109,6 @@ void WidgetTest::slot_readIoCard()
 		}
 		nInfo.m_failureNum = nFailNum;
 		nTestCounter.unlock();
-	}
-}
-void WidgetTest::slot_ConnectSever()
-{
-	//pMainFrm->m_tcpSocket->connectToHost("127.0.0.1",8088);
-	pMainFrm->plc_widget->m_pSocket->connectToHost("192.168.250.1", 9600);
-	if(pMainFrm->plc_widget->m_pSocket->waitForConnected(3000))
-	{
-		QMessageBox::information(this,tr("message"),tr("connect success!"));
-	}else{
-		QMessageBox::information(this,tr("message"),tr("connect failed!"));
 	}
 }
 void WidgetTest::slots_IoOpenPam()

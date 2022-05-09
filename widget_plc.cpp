@@ -20,6 +20,7 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	connect(ui.checkBox,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	connect(ui.checkBox_2,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	m_pSocket = new QUdpSocket();
+	connect(m_pSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState )), this, SLOT(slots_UDPSocketStataChanged( QAbstractSocket::SocketState )));
 	m_pSocket->connectToHost("192.168.250.1", 9600);
 	if (m_pSocket->state() == QAbstractSocket::ConnectedState || m_pSocket->waitForConnected(2000))
 	{
@@ -153,6 +154,17 @@ Widget_PLC::~Widget_PLC()
 {
 	delete m_pSocket;
 }
+void Widget_PLC::slots_UDPSocketStataChanged(QAbstractSocket::SocketState socketState)
+{
+	if (socketState == QAbstractSocket::ConnectedState)
+	{
+		connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
+	}
+	else if(socketState == QAbstractSocket::UnconnectedState)
+	{
+		m_pSocket->abort();
+	}
+}
 void Widget_PLC::EnableCortol()
 {
 	ui.widget->setVisible(false);
@@ -172,7 +184,7 @@ void Widget_PLC::slots_HidePicture()
 void Widget_PLC::slots_intoWidget()
 {
 	QByteArray st;
-	SendPLCMessage(87,st,1,2,266);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
+	SendPLCMessage(87,st,1,2,270);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
 	ui.checkBox->setChecked(false);
 	ui.checkBox_2->setChecked(false);
 	ui.widget->setVisible(false);
@@ -262,7 +274,7 @@ void Widget_PLC::slots_clickBox(int mTemp)
 void Widget_PLC::slots_Pushbuttonread()
 {
 	QByteArray st;
-	SendPLCMessage(20,st,1,1,40);
+	SendPLCMessage(20,st,1,1,44);
 }
 void Widget_PLC::slots_CrashTimeOut()
 {
@@ -330,7 +342,7 @@ void Widget_PLC::SendPLCMessage(int address,QByteArray& send,int state,int id,in
 void Widget_PLC::slots_readFromPLC()
 {
 	QByteArray v_receive = m_pSocket->readAll();
-	if (v_receive.size() == 280)//242+12+4+10+12
+	if (v_receive.size() == 284)//242+12+4+10+12
 	{
 		double v_douTemp = 0;
 		int v_Itmp = 0;
@@ -526,6 +538,10 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		VeSION += QString::number(v_Itmp);
 		ui.label_54->setText(QString::fromLocal8Bit("PLC版本:")+VeSION);
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		ui.lineEdit_41->setText(QString::number(v_Itmp));
+
 	}else if(v_receive.size() == 22)
 	{
 		WORD v_Itmp=0;
@@ -552,10 +568,11 @@ void Widget_PLC::slots_readFromPLC()
 		}
 		ByteToData(v_receive,m_byte,m_byte+1,v_Itmp);
 		emit signal_updatePLCInfo(v_Itmp);
-	}else if(v_receive.size() == 54)//14+40
+	}else if(v_receive.size() == 58)//14+40
 	{
 		double v_douTemp;
 		int v_bit=14;
+		int v_Itmp = 0;
 		ByteToData(v_receive,v_bit,v_bit+7,v_douTemp);
 		ui.lineEdit_8->setText(QString::number(v_douTemp,'f',2));
 		v_bit+=8;
@@ -570,6 +587,9 @@ void Widget_PLC::slots_readFromPLC()
 		v_bit+=8;
 		ByteToData(v_receive,v_bit,v_bit+7,v_douTemp);
 		ui.lineEdit_20->setText(QString::number(v_douTemp,'f',2));
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		ui.lineEdit_42->setText(QString::number(v_Itmp));
 	}
 }
 void Widget_PLC::slots_Pushbuttonsure()
@@ -773,7 +793,9 @@ void Widget_PLC::slots_Pushbuttonsave()
 		TempData = list[i].toInt();
 		DataToByte(TempData,st);
 	}
-	SendPLCMessage(87,st,2,1,266);//120+44+64=244+10
+	TempData = ui.lineEdit_41->text().toInt();
+	DataToByte(TempData,st);
+	SendPLCMessage(87,st,2,1,270);//120+44+64=244+10
 }
 template<typename T>
 void Widget_PLC::DataToByte(T& xx, QByteArray& st)

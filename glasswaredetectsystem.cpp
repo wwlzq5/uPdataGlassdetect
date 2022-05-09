@@ -1174,7 +1174,7 @@ void GlasswareDetectSystem::initInterface()
 	icon.addFile(QString::fromUtf8(":/sys/icon"), QSize(), QIcon::Normal, QIcon::Off);
 	setWindowIcon(icon);
 	nUserWidget = new UserWidget;
-	connect(nUserWidget,SIGNAL(signal_LoginState(int,bool)),this,SLOT(slots_loginState(int,bool)));
+	connect(nUserWidget,SIGNAL(signal_LoginState(int,bool,QString)),this,SLOT(slots_loginState(int,bool,QString)));
 	connect(this,SIGNAL(signals_ShowCount(int,int)),nUserWidget,SLOT(slots_ShowCount(int,int)));
 	/*nUserWidget->hide();*/
 
@@ -1523,7 +1523,7 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		break;
 	case 10:
 		{
-			slots_loginState(nUserWidget->nPermission,false);//上锁
+			slots_loginState(nUserWidget->nPermission,false,"NULL");//上锁
 			nUserWidget->show();
 		}		
 		break;
@@ -2005,7 +2005,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 		{
 			if(nUserWidget->iUserPerm)
 			{
-				slots_loginState(nUserWidget->nPermission,false);
+				slots_loginState(nUserWidget->nPermission,false,"NULL");
 				nUserWidget->nScreenCount=0;
 			}
 // 			if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
@@ -2039,8 +2039,12 @@ void GlasswareDetectSystem::slot_SockScreen()
 	strSession = QString("/system/SeverFailureNum");
 	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
 }
-void GlasswareDetectSystem::slots_loginState(int nPerm,bool isUnlock)
+void GlasswareDetectSystem::slots_loginState(int nPerm,bool isUnlock,QString PerNama)
 {
+	if(PerNama != "NULL")
+	{
+		Logfile.write(tr("PerName:%1 login!").arg(PerNama),CheckLog);
+	}
 	widget_carveSetting->slots_turnCameraPage(0);
 	loginState(nPerm,isUnlock);
 	nUserWidget->iUserPerm = isUnlock;

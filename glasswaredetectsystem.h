@@ -102,7 +102,7 @@ public slots:
 	void slots_SetCameraStatus(int nCam,int mode);
 	void onServerDataReady();
 	void slot_SockScreen();
-	void slots_loginState(int,bool);
+	void slots_loginState(int,bool,QString);
 	void slots_ConnectServer();
 	void slots_SocketStataChanged( QAbstractSocket::SocketState socketState);
 public:

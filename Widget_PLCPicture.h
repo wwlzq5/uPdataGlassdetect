@@ -63,7 +63,7 @@ public slots:
 	void slots_SaveSensorPosition();
 	void slots_SetPLCPara();
 	void slots_updatePLCInfo(WORD sPLCStatus);
-	void SetPLCEleStatus();
+	void SetPLCEleStatus(int);
 public slots:
 	void resizeEvent(QResizeEvent *event);
 signals:
