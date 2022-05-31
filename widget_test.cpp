@@ -362,6 +362,7 @@ void WidgetTest::initInformation()
 		m_nKickDelay = pMainFrm->m_vIOCard[0]->readParam(49);
 		m_nKickWidth = pMainFrm->m_vIOCard[0]->readParam(46);
 		m_nSampleDelay = pMainFrm->m_vIOCard[0]->readParam(42);
+		pMainFrm->Logfile.write(QString("read IoParam:kickdelay=%1,kickWidth=%2,m_nSampleDelay=%3").arg(m_nKickDelay).arg(m_nKickWidth).arg(m_nSampleDelay),OperationLog);
 	}
 	updateIOCardParam();
 }
@@ -753,6 +754,7 @@ void WidgetTest::slots_setToCard()
 		pMainFrm->m_vIOCard[0]->writeParam(49,m_nKickDelay);
 		pMainFrm->m_vIOCard[0]->writeParam(46,m_nKickWidth);
 		pMainFrm->m_vIOCard[0]->writeParam(42,m_nSampleDelay);
+		pMainFrm->Logfile.write(QString("write IoParam:kickdelay=%1,kickWidth=%2,m_nSampleDelay=%3").arg(m_nKickDelay).arg(m_nKickWidth).arg(m_nSampleDelay),OperationLog);
 	}
 }
 void WidgetTest::slots_setToFile()
@@ -817,16 +819,14 @@ void WidgetTest::slots_setToFile()
 
 	strValue = strValue.setNum(m_nKickWidth,10);
 	strPara = strPara.setNum(46,10);
-
 	StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 
 	strValue = strValue.setNum(m_nSampleDelay,10);
 	strPara = strPara.setNum(42,10);
-
 	StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 
 	QSettings iniCarveSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
-	QString strSession;
+	iniCarveSet.setIniCodec(QTextCodec::codecForName("GBK"));
 	iniCarveSet.setValue ("/system/iIOCardOffSet",pMainFrm->test_widget->iIOCardOffSet);
 
 	QSettings iniDataSet(pMainFrm->m_sConfigInfo.m_strConfigPath,QSettings::IniFormat);

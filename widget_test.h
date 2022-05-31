@@ -42,7 +42,7 @@ struct MyStruct
 	int nCount;//数据大小
 	int nCheckNum;//前端通过in0得到的过检总数
 	int nFail;//前端通过out3得到的踢废总数
-	char nTemp[128];//前端的多余变量
+	char nTemp[256];//前端的多余变量
 };
 struct NingInfo
 {

@@ -28,7 +28,6 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	}
 	QIntValidator* IntValidator = new QIntValidator;
 	IntValidator->setRange(1, 60);
-	//ui.lineEdit_2->setValidator(IntValidator);
 	ui.lineEdit_3->setValidator(IntValidator);
 	ui.lineEdit_4->setValidator(IntValidator);
 	ui.lineEdit_5->setValidator(IntValidator);

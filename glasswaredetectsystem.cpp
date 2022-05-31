@@ -118,7 +118,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.6");
+	return SysType + QString(tr("Version:")+"6.64.2.0");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -273,13 +273,13 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 		nQueue[tempCamera].listGrab.removeFirst();
 		memcpy(pGrabElement->SourceImage->bits(),pImageBuffer,nWidth*nHeight);
 		pMainFrm->nQueue[tempCamera].mGrabLocker.unlock();
-		if(!m_sSystemInfo.m_iTest)
-		{
-			if(m_sSystemInfo.m_iSystemType != 2)//夹持使用镜像，前后壁使用原始图
-			{
-				*pGrabElement->SourceImage = pGrabElement->SourceImage->mirrored();
-			}
-		}
+		//if(!m_sSystemInfo.m_iTest)
+		//{
+		//	if(m_sSystemInfo.m_iSystemType != 2)//夹持使用镜像，前后壁使用原始图
+		//	{
+		//		*pGrabElement->SourceImage = pGrabElement->SourceImage->mirrored();
+		//	}
+		//}
 		pGrabElement->bHaveImage=TRUE;
 		pGrabElement->nCheckRet = FALSE;
 		pGrabElement->cErrorParaList.clear();
@@ -426,6 +426,12 @@ void GlasswareDetectSystem::onServerDataReady()
 
 				strSession = QString("/system/SeverFailureNum");
 				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
+
+				for (int i=0;i< m_sSystemInfo.iCamCount;i++)
+				{
+					strSession = QString("LastTimeDate/ErrorCamera_%1_count").arg(i);
+					iniDataSet.setValue(strSession,m_sRunningInfo.m_iErrorCamCount[i]);
+				}
 
 				pMainFrm->nCountNumber = 0;
 			}
@@ -2043,7 +2049,7 @@ void GlasswareDetectSystem::slots_loginState(int nPerm,bool isUnlock,QString Per
 {
 	if(PerNama != "NULL")
 	{
-		Logfile.write(tr("PerName:%1 login!").arg(PerNama),CheckLog);
+		Logfile.write(tr("PerName:%1 login!").arg(PerNama),OperationLog);
 	}
 	widget_carveSetting->slots_turnCameraPage(0);
 	loginState(nPerm,isUnlock);

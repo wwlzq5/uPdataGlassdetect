@@ -46,8 +46,14 @@ void DetectThread::ProcessHanlde(int Camera)
 		}
 		else
 		{
-			long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
-			memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(), DetectElement.ImageNormal->SourceImage->bits(), lImageSize);
+			memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(), DetectElement.ImageNormal->SourceImage->bits(), pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight);
+		}
+		if(!pMainFrm->m_sSystemInfo.m_iTest)//夹持使用镜像，前后壁使用原始图
+		{
+			if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
+			{
+				*pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage = pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->mirrored();
+			}
 		}
 		//裁剪原始图片
 		pMainFrm->m_mutexmCarve[iCamera].lock();
@@ -142,7 +148,7 @@ void DetectThread::rotateImage(CGrabElement *pElement)
 	if(pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageAngle != 0)
 	{
 		sAlgCInp.nParam = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageAngle;
-		//pMainFrm->m_cBottleRotate[iCamera].Check(sAlgCInp, &pAlgCheckResult);
+		pMainFrm->m_cBottleRotate[iCamera].Check(sAlgCInp, &pAlgCheckResult);
 	}
 }
 //检测
@@ -152,11 +158,11 @@ void DetectThread::checkImage(CGrabElement *pElement,int iCheckMode)
 	sAlgCInp.sInputParam.nWidth = pElement->myImage->width();
 	sAlgCInp.sInputParam.nChannel = 1;
 	sAlgCInp.sInputParam.pcData = (char*)pElement->myImage->bits();
-	sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
+	//sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
 
 	if (0 == iCheckMode)
 	{
-		//sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
+		sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
 		pMainFrm->m_sCarvedCamInfo[iCamera].sImageLocInfo[pElement->nSignalNo].m_AlgImageLocInfos.sLocOri = pAlgCheckResult->sImgLocInfo.sLocOri;
 		pMainFrm->m_sCarvedCamInfo[iCamera].sImageLocInfo[pElement->nSignalNo].m_AlgImageLocInfos.sXldPoint.nCount  = pAlgCheckResult->sImgLocInfo.sXldPoint.nCount;
 		memcpy(pMainFrm->m_sCarvedCamInfo[iCamera].sImageLocInfo[pElement->nSignalNo].m_AlgImageLocInfos.sXldPoint.nColsAry, \
@@ -197,15 +203,13 @@ void DetectThread::checkImage(CGrabElement *pElement,int iCheckMode)
 			tempOri = pElement->sImgLocInfo.sLocOri;
 		}
 		sAlgCInp.sImgLocInfo = pElement->sImgLocInfo;
-		//sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
+		sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
 		pMainFrm->m_sCarvedCamInfo[ pMainFrm->m_sCarvedCamInfo[iCamera].m_iToNormalCamera].sImageLocInfo[pElement->nSignalNo].m_iHaveInfo = 0;
 	}
 	else
 	{
-		//sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
+		sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
 	}
-	sReturnStatus.nErrorID = 0;
-	pAlgCheckResult->nSizeError = 0;
 }
 //获取检测结果
 bool DetectThread::getCheckResult(CGrabElement *pElement)
@@ -359,11 +363,11 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 			s_ErrorPara sComErrorpara = pMainFrm->m_cCombine.ConbineError(nSignalNo);
 			if (pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].ErrorTypeJudge(sComErrorpara.nErrorType))
 			{
-				pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[sComErrorpara.nErrorType]+=1;
-				pMainFrm->m_sRunningInfo.m_iErrorCamCount[iErrorCamera] += 1;
+				//pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[sComErrorpara.nErrorType]+=1;
+				pMainFrm->m_sRunningInfo.m_iErrorCamCount[iErrorCamera] += 1;//缺陷相机计数
 				//暂时使用无用变量作为总的综合踢废数目 by zl
-				pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0] += 1;//阴同添加
-				pMainFrm->m_sRunningInfo.m_iErrorTypeCount[sComErrorpara.nErrorType] +=1;
+				pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0] += 1;
+				//pMainFrm->m_sRunningInfo.m_iErrorTypeCount[sComErrorpara.nErrorType] +=1;//每种缺陷的计数统计
 				pMainFrm->nSendData[nSignalNo].id = iErrorCamera;
 				pMainFrm->nSendData[nSignalNo].nType = sComErrorpara.nErrorType;
 				pMainFrm->nSendData[nSignalNo].nErrorArea = sComErrorpara.nArea;
@@ -371,8 +375,8 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 			}
 			else
 			{
-				pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[0]+=1;
-				pMainFrm->m_sRunningInfo.m_iErrorTypeCount[0] +=1;
+				//pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[0]+=1;
+				//pMainFrm->m_sRunningInfo.m_iErrorTypeCount[0] +=1;
 			}
 		}
 	}
